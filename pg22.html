@@ -1,0 +1,172 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Espacial</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        /* Estilo para las imágenes del fondo divididas en 4 partes */
+        .background {
+            position: absolute;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Estilos para posicionar cada imagen de fondo en una parte de la pantalla */
+        #fondo1 { top: 0; left: 0; height: 50%; width: 50%; }
+        #fondo2 { top: 0; right: 0; height: 50%; width: 50%; }
+        #fondo3 { bottom: 0; left: 0; height: 50%; width: 50%; }
+        #fondo4 { bottom: 0; right: 0; height: 50%; width: 50%; }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Estilo para la imagen del astronauta */
+        #astronauta {
+            position: absolute;
+            z-index: 2;
+            bottom: 50px;
+            left: 50px;
+            width: 150px;
+        }
+
+        /* Estilo para el contenedor de recursos */
+        #contenedorRecursos {
+            position: absolute;
+            z-index: 3;
+            top: 10px;
+            right: 10px;
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* Estilo para el contenido dentro de la imagen de recursos */
+        #contenedorRecursos img {
+            display: block;
+            width: 100%;
+        }
+
+        /* Estilo para el texto del astronauta */
+        #textoAstronauta {
+            position: absolute;
+            z-index: 3;
+            bottom: 100px;
+            left: 250px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 18px;
+            width: 200px;
+            text-align: center;
+        }
+
+        /* Estilo para la imagen en la esquina inferior derecha */
+        #siguientePagina {
+            position: absolute;
+            z-index: 3;
+            bottom: 10px;
+            right: 10px;
+            width: 100px;
+            cursor: pointer;
+        }
+
+        /* Estilo para posicionar los elementos dentro de la imagen azul */
+        #recursos {
+            position: absolute;
+            top: 60%; /* Ajusta según la posición dentro de la imagen */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #recursos .recurso-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para ajustar tamaños de cada imagen individualmente */
+        #agua {
+            width: 50px; /* Ajusta el tamaño del icono de agua */
+        }
+
+        #porcentajeAgua {
+            width: 80px; /* Ajusta el tamaño de la imagen de porcentaje de agua */
+        }
+
+        #oxigeno {
+            width: 50px; /* Ajusta el tamaño del icono de oxígeno */
+        }
+
+        #porcentajeOxigeno {
+            width: 50px; /* Ajusta el tamaño de la imagen de porcentaje de oxígeno */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Fondo con imágenes divididas en 4 partes -->
+    <div id="fondo1" class="background">
+        <img src="img92.jpg" alt="Fondo Espacio 1">
+    </div>
+    <div id="fondo2" class="background">
+        <img src="img93.jpg" alt="Fondo Espacio 2">
+    </div>
+    <div id="fondo3" class="background">
+        <img src="img94.jpg" alt="Fondo Espacio 3">
+    </div>
+    <div id="fondo4" class="background">
+        <img src="img95.jpg" alt="Fondo Espacio 4">
+    </div>
+
+    <!-- Imagen del astronauta -->
+    <img id="astronauta" src="img97.png" alt="Astronauta">
+
+    <!-- Texto del astronauta -->
+    <div id="textoAstronauta">
+        ¡Hola astronauta! En este nivel tendrás que ser un explorador y buscar el agua y el oxígeno para abastecer los recursos.
+    </div>
+
+    <!-- Contenedor de recursos con la imagen azul de fondo -->
+    <div id="contenedorRecursos">
+        <h3>Inventario de Recursos</h3>
+        <img src="img101.png" alt="Recursos"> <!-- Imagen azul de fondo -->
+        <div id="recursos">
+            <div class="recurso-item">
+                <img id="porcentajeAgua" src="img102.png" alt="Porcentaje de Agua">
+                <img id="agua" src="img103.png" alt="Agua">
+            </div>
+            <div class="recurso-item">
+                <img id="porcentajeOxigeno" src="img104.png" alt="Porcentaje de Oxígeno">
+                <img id="oxigeno" src="img105.png" alt="Oxígeno">
+            </div>
+        </div>
+    </div>
+
+    <!-- Imagen clicable en la esquina inferior derecha -->
+    <img id="siguientePagina" src="img100.png" alt="Siguiente Página" onclick="window.location.href='pg23.html'">
+
+</body>
+</html>
+
+

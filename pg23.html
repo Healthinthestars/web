@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imágenes Aleatorias</title>
+    <style>
+        body {
+            background-image: url('img93.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .img-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        img {
+            width: 100px; /* Ajusta el tamaño de las imágenes */
+            height: auto;
+            cursor: pointer;
+            position: absolute;
+        }
+        .next-button {
+            position: absolute;
+            bottom: 50px;
+            right: 100px; /* Ajustado para estar más a la izquierda */
+        }
+        .next-button img {
+            cursor: pointer;
+            width: 50px;
+        }
+        .button-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .button-container img {
+            cursor: pointer;
+            width: 50px;
+        }
+        #counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: black;
+            color: white;
+            border: 2px solid lightblue;
+            padding: 10px;
+            font-size: 20px;
+            z-index: 10;
+        }
+	
+    </style>
+</head>
+<body>
+
+<div id="counter">PUNTOS: 0</div>
+
+<div class="img-container" id="imgContainer"></div>
+<div class="next-button">
+    <img src="img33.png" alt="Botón Siguiente" onclick="window.location.href='pg24.html'">
+</div>
+
+<script>
+    const images = ['img105.png', 'img103.png'];
+    const imgContainer = document.getElementById('imgContainer');
+    const counterElement = document.getElementById('counter');
+    const padding = 50; // Margen desde los bordes
+    let clickCount = 0;
+
+    function randomPosition() {
+        const x = Math.floor(Math.random() * (window.innerWidth - padding * 2 - 100)) + padding;
+        const y = Math.floor(Math.random() * (window.innerHeight - padding * 2 - 100)) + padding;
+        return { x, y };
+    }
+    
+    function showImages() {
+        for (let i = 0; i < 7; i++) { // Cambiado a 7 imágenes
+            const img = document.createElement('img');
+            img.src = images[Math.floor(Math.random() * images.length)];
+            const { x, y } = randomPosition();
+            img.style.left = `${x}px`;
+            img.style.top = `${y}px`;
+            img.addEventListener('click', () => {
+                img.style.display = 'none';
+                clickCount++;
+                counterElement.textContent = `PUNTOS: ${clickCount}`;
+
+                // Redirigir a pg24.html si el contador alcanza 7
+                if (clickCount >= 7) {
+                    window.location.href = 'pg24.html';
+                }
+            });
+            imgContainer.appendChild(img);
+        }
+
+        setTimeout(() => {
+            const allImages = imgContainer.getElementsByTagName('img');
+            for (let img of allImages) {
+                img.style.display = 'none';
+            }
+            setTimeout(() => {
+                location.reload();
+            }, 30000); // Reinicia la página después de 30 segundos
+        }, 15000); // Las imágenes desaparecen después de 15 segundos
+    }
+
+    showImages();
+</script>
+
+</body>
+</html>
+
+
+
+
+

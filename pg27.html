@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puntuación Espacial</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Pixelated', sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+      background: url('img0.jpg') no-repeat center center/cover;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 20px;
+      position: relative;
+    }
+
+    .title {
+      width: 400px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .star {
+      width: 60px;
+      transition: transform 0.3s, filter 0.2s;
+    }
+
+    .star:hover {
+      transform: scale(1.2); /* Efecto de zoom */
+      filter: brightness(1.5); /* Aumento de brillo */
+    }
+
+    .selected {
+      filter: sepia(1) hue-rotate(45deg) saturate(2); /* Cambio de color al seleccionar */
+    }
+
+    .score {
+      margin-top: 10px;
+      font-size: 24px;
+      color: white;
+      text-shadow: 2px 2px 4px black;
+    }
+
+    /* Estilo del botón de "Volver al inicio" */
+    .back-button {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
+      border-radius: 10px;
+      padding: 15px 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 20px;
+      color: white;
+      text-shadow: 2px 2px 4px black;
+    }
+
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1); /* Efecto de zoom al pasar el ratón */
+      border-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="img130.png" alt="Título Puntuación" class="title">
+
+    <div class="stars" id="stars-container">
+      <img src="img131.png" alt="Estrella 1" class="star" data-score="1">
+      <img src="img131.png" alt="Estrella 2" class="star" data-score="2">
+      <img src="img131.png" alt="Estrella 3" class="star" data-score="3">
+      <img src="img131.png" alt="Estrella 4" class="star" data-score="4">
+      <img src="img131.png" alt="Estrella 5" class="star" data-score="5">
+    </div>
+
+    <div class="score" id="score-text">Selecciona una puntuación</div>
+
+    <!-- Botón Volver al Inicio -->
+    <div class="back-button" onclick="location.href='pg1.html'">
+      Volver al Inicio
+    </div>
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('.star');
+    const scoreText = document.getElementById('score-text');
+    let selectedScore = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('mouseover', () => highlightStars(star.dataset.score));
+      star.addEventListener('click', () => setScore(star.dataset.score));
+    });
+
+    function highlightStars(score) {
+      stars.forEach(star => {
+        star.classList.toggle('selected', star.dataset.score <= score);
+      });
+    }
+
+    function setScore(score) {
+      selectedScore = score;
+      scoreText.textContent = `Puntuación seleccionada: ${selectedScore} ⭐`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Espacial Mejorado</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-image: url('img75.png');
+            background-size: cover;
+        }
+        #gameArea {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        .nave {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .meteorito {
+            position: absolute;
+        }
+        #startButton {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: orange;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #points {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 24px;
+        }
+        #healthBar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 200px;
+            height: 20px;
+            background-color: red;
+        }
+        #healthBarInner {
+            height: 100%;
+            background-color: green;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="gameArea">
+    <img id="nave" src="img76.png" class="nave" width="300" alt="Nave espacial">
+    <div id="points">Puntos: 0</div>
+    <div id="healthBar"><div id="healthBarInner"></div></div>
+    <button id="startButton">Start</button>
+</div>
+
+<script>
+    let nave = document.getElementById('nave');
+    let gameArea = document.getElementById('gameArea');
+    let pointsDisplay = document.getElementById('points');
+    let startButton = document.getElementById('startButton');
+    let healthBarInner = document.getElementById('healthBarInner');
+    let points = 0;
+    let health = 100;
+    let meteorInterval;
+    let isGameOver = false;
+    let meteoritos = [];
+    let fallSpeed = 25; // Velocidad más rápida de caída de los meteoritos
+    let moveSpeed = 60; // Aumenta la velocidad de movimiento de la nave
+    let collisions = 0; // Contador de colisiones
+
+    function moveNave(direction) {
+        let currentPos = nave.offsetLeft;
+        if (direction === 'right' && currentPos + nave.width < window.innerWidth) {
+            nave.style.left = currentPos + moveSpeed + 'px';
+        } else if (direction === 'left' && currentPos > 0) {
+            nave.style.left = currentPos - moveSpeed + 'px';
+        }
+    }
+
+    function createMeteorito() {
+        let meteorito = document.createElement('img');
+        let randomMeteor = ['img80.png', 'img81.png', 'img82.png'][Math.floor(Math.random() * 3)];
+        meteorito.src = randomMeteor;
+        meteorito.classList.add('meteorito');
+        meteorito.style.left = Math.random() * (window.innerWidth - 120) + 'px';
+        meteorito.style.top = '-100px';
+        meteorito.style.width = '120px';
+        gameArea.appendChild(meteorito);
+        meteoritos.push(meteorito);
+
+        let meteoritoMove = setInterval(() => {
+            if (!isGameOver) {
+                meteorito.style.top = parseInt(meteorito.style.top) + fallSpeed + 'px';
+                if (parseInt(meteorito.style.top) > window.innerHeight) {
+                    clearInterval(meteoritoMove);
+                    meteorito.remove();
+                    meteoritos = meteoritos.filter(m => m !== meteorito);
+
+                    if (!isGameOver) {
+                        points += 3;
+                        pointsDisplay.textContent = 'Puntos: ' + points;
+
+                        // Pausar el juego y redirigir a otra página al llegar a 30 puntos
+                        if (points >= 30) {
+                            clearInterval(meteorInterval);
+                            setTimeout(() => {
+                                window.location.href = "pg19.html";
+                            }, 4000); // Pausa de 4 segundos antes de redirigir
+                        }
+                    }
+                }
+
+                detectCollision(meteorito, meteoritoMove);
+            }
+        }, 40);
+    }
+
+    function detectCollision(meteorito, meteoritoMove) {
+        let meteoritoRect = meteorito.getBoundingClientRect();
+        let naveRect = nave.getBoundingClientRect();
+
+        if (naveRect.right >= meteoritoRect.left &&
+            naveRect.left <= meteoritoRect.right &&
+            naveRect.bottom >= meteoritoRect.top &&
+            naveRect.top <= meteoritoRect.bottom) {
+
+            collisions++;
+            health -= 33.33; // Vida se reduce por 33.33 con cada choque (3 choques en total)
+            healthBarInner.style.width = Math.max(0, health) + '%';
+
+            if (collisions >= 3) {
+                isGameOver = true;
+                clearInterval(meteoritoMove);
+                meteorito.remove();
+                showExplosion(nave);
+
+                // Hacer pausa de 4 segundos y luego reiniciar la página
+                setTimeout(() => {
+                    window.location.reload();
+                }, 4000);
+            }
+
+            meteorito.remove();
+        }
+    }
+
+    function showExplosion(element) {
+        let explosion = document.createElement('img');
+        explosion.src = 'exp1.png';
+        explosion.style.position = 'absolute';
+        explosion.style.left = element.offsetLeft + 'px';
+        explosion.style.top = element.offsetTop + 'px';
+        explosion.style.width = '150px';
+        explosion.style.zIndex = '10';
+        gameArea.appendChild(explosion);
+
+        setTimeout(() => explosion.remove(), 1000);
+    }
+
+    startButton.addEventListener('click', () => {
+        startButton.style.display = 'none';
+        points = 0;
+        pointsDisplay.textContent = 'Puntos: ' + points;
+
+        meteorInterval = setInterval(createMeteorito, 1500); // Aumenta la frecuencia de los meteoritos
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                moveNave('right');
+            } else if (e.key === 'ArrowLeft') {
+                moveNave('left');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

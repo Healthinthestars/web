@@ -1,0 +1,230 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Áreas Contaminadas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 10px;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1; /* Asegura que el fondo quede detrás */
+        }
+
+        .background {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #bg1 { background-image: url('img84.jpg'); }
+        #bg2 { background-image: url('img85.jpg'); }
+        #bg3 { background-image: url('img86.jpg'); }
+        #bg4 { background-image: url('img87.jpg'); }
+
+        .triangle {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('img88.png');
+            background-size: cover;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .triangle.hidden {
+            display: none;
+        }
+
+        #cloud {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 3;
+        }
+
+        #cloud p {
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            color: black;
+            text-align: center;
+        }
+
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            color: orange;
+            background-color: black;
+            border: 3px solid darkorange;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 3;
+        }
+
+        #playButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            color: orange;
+            background-color: black;
+            border: 3px solid darkorange;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 4;
+        }
+
+        #astronaut {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-image: url('img89.png');
+            width: 200px;
+            height: 300px;
+            background-size: cover;
+            z-index: 3;
+        }
+
+        .full-screen-invade {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            z-index: 9999;
+        }
+
+        .full-screen-invade .small-triangle {
+            width: 100%;
+            height: 100%;
+            background-image: url('img88.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cloud">
+        <p>Haz click en las áreas contaminadas para eliminarlas</p>
+    </div>
+
+    <div id="score">Puntos: 0</div>
+
+    <button id="playButton">JUGAR</button>
+
+    <div class="container">
+        <div id="bg1" class="background"></div>
+        <div id="bg2" class="background"></div>
+        <div id="bg3" class="background"></div>
+        <div id="bg4" class="background"></div>
+    </div>
+
+    <div id="astronaut"></div>
+
+    <script>
+        let score = 0;
+        const scoreDisplay = document.getElementById('score');
+        const playButton = document.getElementById('playButton');
+        const triangles = [];
+        const backgrounds = document.querySelectorAll('.background');
+        let invasionTimeout;
+
+        // Ocultar el botón y empezar el juego al hacer clic en "JUGAR"
+        playButton.addEventListener('click', () => {
+            playButton.style.display = 'none';
+            startGame();
+        });
+
+        // Añadir un triángulo a cada imagen de fondo de manera aleatoria
+        backgrounds.forEach(bg => {
+            const triangle = document.createElement('div');
+            triangle.classList.add('triangle');
+            triangle.addEventListener('click', handleClick);
+            bg.appendChild(triangle);
+            triangles.push(triangle);
+        });
+
+        function handleClick() {
+            this.classList.add('hidden');
+            score += 3;
+            scoreDisplay.textContent = `Puntos: ${score}`;
+            clearTimeout(invasionTimeout);  // Reiniciar el temporizador de invasión
+            checkWin();
+        }
+
+        function checkWin() {
+            if (score >= 15) {
+                window.location.href = 'pg21.html';
+            } else {
+                startGame();
+            }
+        }
+
+        function startGame() {
+            const randomIndex = Math.floor(Math.random() * 4);
+            triangles[randomIndex].classList.remove('hidden');
+
+            invasionTimeout = setTimeout(() => {
+                // Si tarda más de 4 segundos sin hacer clic, invadir la pantalla con triángulos pequeños
+                fillScreen();
+            }, 4000);
+        }
+
+        function fillScreen() {
+            // Crear el contenedor para llenar la pantalla con muchas imágenes pequeñas
+            const fullScreenDiv = document.createElement('div');
+            fullScreenDiv.classList.add('full-screen-invade');
+            
+            // Agregar 100 pequeños triángulos para invadir la pantalla
+            for (let i = 0; i < 100; i++) {
+                const smallTriangle = document.createElement('div');
+                smallTriangle.classList.add('small-triangle');
+                fullScreenDiv.appendChild(smallTriangle);
+            }
+
+            document.body.appendChild(fullScreenDiv);
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        }
+
+    </script>
+
+</body>
+</html>
+
+
+

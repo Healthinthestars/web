@@ -1,0 +1,108 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Instrucciones</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background-image: url('img66.jpg'); /* Cambia 'img_fondo.jpg' al nombre de tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .back-button img {
+            width: 60px;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .instructions-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid white;
+            width: 450px;
+            padding: 20px;
+            position: absolute;
+            left: 150px;
+            border-radius: 15px;
+            text-align: left;
+            color: white;
+        }
+        .instructions-box h2 {
+            text-align: center;
+            margin: 0 0 10px 0;
+        }
+        .instructions-box img {
+            width: 50px;
+            height: 50px;
+            margin: 10px 0;
+        }
+        .level {
+            position: absolute;
+            top: 100px;
+            right: 300px;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            color: black;
+            text-align: center;
+        }
+     
+          .next-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .next-button img {
+            cursor: pointer;
+            width: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Botón de retroceso -->
+    <div class="back-button">
+        <img src="img35.png" alt="Botón Atrás" onclick="history.back()"> <!-- Cambia 'back_button.png' por la imagen correspondiente -->
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Cuadro de instrucciones -->
+        <div class="instructions-box">
+            <h2>INSTRUCCIONES</h2>
+            <p>Identifica las áreas contaminadas (marcadas en rojo).</p>
+            <p>Haz clic en las zonas de alerta para limpiar las áreas infectadas. </p>
+            <p>Evita que la infección se propague a otras secciones de la nave.</p>
+            <img src="img83.png" alt="Asteroide"> <!-- Cambia 'asteroid.png' por la imagen del asteroide -->
+        </div>
+
+        <!-- Indicador de nivel -->
+        <div class="level">
+            NIVEL 2
+        </div>
+
+       
+    </div>
+	 <div class="next-button">
+            <img src="img33.png" alt="Botón Siguiente" onclick="window.location.href='pg20.html'">
+        </div>
+</body>
+</html>
