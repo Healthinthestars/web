@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Instrucciones</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('img66.jpg'); /* Cambia 'img_fondo.jpg' al nombre de tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .container {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .box {
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 40%;
+            height: 350px;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-image: url('img67.png'); /* Cambia 'img_contenedor.png' a la imagen del cuadro */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.3s;
+            border: 3px solid #00ffff; /* Borde para que se asemeje al contorno */
+        }
+        .box:hover {
+            transform: scale(1.05);
+        }
+        .box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .box p {
+            font-size: 1.1rem;
+            margin: 0;
+            padding: 0 10px;
+            line-height: 1.4;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+        .back-button img {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de retroceso -->
+    <div class="back-button">
+        <img src="img35.png" alt="Botón Atrás" onclick="history.back()">
+    </div>
+
+    <div class="container">
+        <!-- Contenedor izquierdo (Descripción de la misión) -->
+        <div class="box" onclick="window.location.href='pg17.html';">
+            <h2>1. El objetivo principal</h2>
+            <p>El objetivo principal es cuidar la salud del personaje y evitar que no sufra enfermedades, lesiones o se enferme.</p>
+        </div>
+
+        <!-- Contenedor derecho (Lista de instrucciones) -->
+        <div class="box">
+            <h2>Lista De Instrucciones</h2>
+            <p>Nivel 1: Tormenta de asteroides</p>
+            <p>Nivel 2: Falla en los sistemas de vida</p>
+            <p>Nivel 3: Infección alienígena</p>
+        </div>
+    </div>
+</body>
+</html>
+

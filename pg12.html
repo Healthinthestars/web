@@ -1,0 +1,58 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Traje Espacial</title>
+    <style>
+       body {
+            margin: 0;
+            padding: 0;
+            background: url('img49.jpg') no-repeat center center fixed; /* Fondo espacial */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            background-color: #b5c9e1;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .traje-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .traje {
+            cursor: pointer;
+        }
+        .traje img {
+            width: 250px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SELECCIONAR TRAJE ESPACIAL</h1>
+        <div class="traje-container">
+            <div class="traje" onclick="location.href='pg13.html'">
+                <img src="img61.png" alt="Traje Espacial 1">
+            </div>
+            <div class="traje" onclick="location.href='pg14.html'">
+                <img src="img62.png" alt="Traje Espacial 2">
+            </div>
+            <div class="traje" onclick="location.href='pg15.html'">
+                <img src="img63.png" alt="Traje Espacial 3">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

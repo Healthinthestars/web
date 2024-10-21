@@ -1,0 +1,85 @@
+<html lang="es"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traje Espacial - Nébula</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('img64.jpg'); /* Aquí va la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            position: relative;
+            width: 80%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .text-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            width: 50%;
+        }
+        .text-box h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .text-box p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .astronauta {
+            width: 300px;
+        }
+        .button-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .button-container img {
+            cursor: pointer;
+            width: 50px;
+        }
+        .next-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        .next-button img {
+            cursor: pointer;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-box">
+            <h2>Quantum:</h2>
+            <p>Hace referencia a la física cuántica, un traje con tecnología avanzada y capacidades de teletransportación a pequeña escala.</p>
+        </div>
+        <div class="astronauta">
+            <img src="img63.png" alt="Traje Nébula">
+        </div>
+    </div>
+
+    <div class="button-container">
+        <img src="img35.png" alt="Botón Atrás" onclick="history.back()">
+    </div>
+    <div class="next-button">
+        <img src="img33.png" alt="Botón Siguiente" onclick="window.location.href='pg16.html'"
+
+    </div>
+</body>
+</html>

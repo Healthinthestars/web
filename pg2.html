@@ -1,0 +1,140 @@
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTH IN THE STARS</title>
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: black;
+            color: white;
+            background-image: url("img12.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            color: black;
+            font-size: 24px;
+            padding: 30px;
+            border: 4px solid black;
+            width: 600px;
+            position: absolute;
+            bottom: 250px;
+            right: 80px;
+            box-shadow: 5px 5px 0px black;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .astronaut {
+            position: absolute;
+            bottom: -25px;
+            left: 30px;
+            width: 450px;
+            height: auto;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .next-button {
+            display: inline-block;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+            text-decoration: none;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        .next-button:hover {
+            background-color: white;
+            color: black;
+        }
+
+       
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .speech-bubble {
+            position: absolute;
+            bottom: 200px;
+            left: 500px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            font-size: 18px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+            z-index: 1;
+            color: black;
+        }
+
+        .speech-bubble p {
+            color: black;
+        }
+
+        .speech-bubble .next-button {
+            background-color: black; 
+            color: white;
+            border: 2px solid black;
+        }
+
+        .speech-bubble .next-button:hover {
+            background-color: white; 
+            color: black;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 20%;
+            margin-left: -10px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="img14.png" alt="Astronauta" class="astronaut">
+    
+    <div class="speech-bubble">
+        <p>¡BIENVENIDO AL JUEGO DE SALUD ESPACIAL!</p>
+        <p>¡EXPLORA EL UNIVERSO Y MANTÉN TU CUERPO Y MENTE EN FORMA!</p>
+        <a href="./pg3.html" class="next-button">NEXT</a>
+ 
+        
+</body>
+</html>
+
+
+
+
+
+
+

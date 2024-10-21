@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Juego de Astronauta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive; /* Fuente retro aplicada a todo el cuerpo */
+            background-image: url('img27.jpg');
+            background-size: cover; /* Asegura que la imagen cubra toda la página */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            height: 100vh; /* Asegura que el fondo cubra la altura completa */
+            overflow: hidden; /* Evita que aparezcan barras de desplazamiento */
+            color: white; /* Cambia el color del texto para resaltar */
+        }
+
+        .container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header {
+            position: absolute;
+            top: 10%;
+            width: 70%;
+            text-align: left;
+        }
+
+        .speech-bubble {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 15px;
+            border: 2px solid black;
+            box-shadow: 5px 5px black;
+            font-size: 12px; 
+            color: black; 
+            width: 70%;
+            margin: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .next-button, .back-button {
+            display: inline-block;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+            text-decoration: none;
+            border: 2px solid black;
+            cursor: pointer;
+            z-index: 10; 
+        }
+
+        .next-button:hover, .back-button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .astronaut {
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            z-index: 9;
+        }
+
+        .astronaut img {
+            width: 700px;
+            height: auto;
+        }
+   .back-menu {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="speech-bubble">
+                <p>
+                    Bienvenido, soy <strong>Sally Ride</strong>, una astronauta valiente y visionaria.<br>
+                    Tengo 25 años y estaré encantada de hacer parte de esta aventura mientras<br>
+                    exploramos este apasionante entrenamiento para cuidar de mi salud.
+                </p>
+                <a href="pg5.html"><button class="next-button">NEXT</button></a> 
+            </div>
+        </div>
+
+        <div class="astronaut">
+            <img src="img29.png" alt="Astronauta">
+        </div>
+
+        <div class="back-menu">
+            <a href="pg3.html"><button class="back-button">BACK</button></a> 
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

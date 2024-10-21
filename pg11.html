@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Recursos Espaciales</title>
+    <style>
+        /* Estilo general */
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('img37.jpg'); /* Imagen de fondo de la nave */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Contenedor principal */
+        .main-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background: rgba(50, 50, 50, 0.8); /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #333;
+        }
+
+        /* Contenedor del inventario */
+        .inventory {
+            background-image: url('img38.png'); /* Imagen de fondo del contenedor del inventario */
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 400px; /* Ajusta el tamaño según sea necesario */
+            height: 600px; /* Ajusta el tamaño según sea necesario */
+            position: relative; /* Para posicionar elementos dentro del contenedor */
+            margin-right: 20px;
+            padding: 20px;
+        }
+
+        /* Imagen del personaje */
+        .character {
+            position: absolute;
+            top: 10%; /* Ajusta la posición vertical del personaje */
+            left: 40%; /* Ajusta la posición horizontal del personaje */
+            width: 160px; /* Tamaño del personaje */
+            height: 300px;
+        }
+
+        /* Cuadro de inventario con ítems */
+        .inventory-grid {
+            position: absolute;
+            top: 59%; /* Ajusta esta posición según la imagen */
+            left: 5%; /* Ajusta esta posición según la imagen */
+            display: grid;
+            grid-template-columns: repeat(4, 80px); /* 4 columnas de 60px */
+            grid-template-rows: repeat(3, 50px); /* 3 filas de 50px */
+            gap: 5px;
+        }
+
+        /* Ítems del inventario */
+        .inventory-grid img {
+            width: 90px;
+            height: 90px;
+           
+        }
+
+        /* Contenedor del texto descriptivo */
+        .description {
+            background: rgba(100, 100, 100, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            width: 350px;
+            color: #fff;
+        }
+
+        /* Estilo de cada bloque de descripción */
+        .description-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .description-item img {
+            width: 50px; /* Tamaño de cada imagen en la descripción */
+            height: 50px;
+            margin-right: 10px;
+        }
+
+          .next-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .next-button img {
+            cursor: pointer;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Inventario -->
+        <div class="inventory">
+            <!-- Imagen del personaje dentro del contenedor -->
+            <div class="character">
+                <img src="img60.png" alt="Astronauta">
+            </div>
+
+            <!-- Cuadro de inventario con ítems -->
+            <div class="inventory-grid">
+                <img src="img41.png" alt="Oxígeno">
+				<img src="img40.png" alt="Oxígeno">
+                <img src="img42.png" alt="Botiquín">
+                <img src="img43.png" alt="Herramientas">
+                <!-- Puedes añadir más ítems aquí -->
+            </div>
+        </div>
+
+        <!-- Sección de descripción -->
+        <div class="description">
+            <h2>INVENTARIO DE RECURSOS</h2>
+            <!-- Descripción del oxígeno -->
+			  <div class="description-item">
+                <img src="img40.png" alt="Oxígeno">
+                <p>El oxígeno es un elemento vital para cualquier misión espacial, ya que garantiza la supervivencia de los astronautas y el funcionamiento de diversas tecnologías.</p>
+            </div>
+            <div class="description-item">
+                <img src="img41.png" alt="Oxígeno">
+                <p>Botiquines especiales son miniclinicas en órbita, adaptados a la gravedad cero, curan en el espacio, son esenciales para la salud de los astronautas</p>
+            </div>
+            <!-- Descripción del botiquín -->
+            <div class="description-item">
+                <img src="img42.png" alt="Botiquín">
+                <p>Los kits de herramientas espaciales son como los de cualquier taller, pero adaptados al entorno espacial.</p>
+            </div>
+            <!-- Descripción de las herramientas -->
+            <div class="description-item">
+                <img src="img43.png" alt="Herramientas">
+                <p>Una botella de agua en el espacio no solo es un objeto para beber. Es una herramienta esencial para la supervivencia, la investigación y el mantenimiento de la vida a bordo de las naves espaciales.</p>
+            </div>
+           
+         
+		
+    </div>
+	 <div class="next-button">
+            <img src="img33.png" alt="Botón Siguiente" onclick="window.location.href='pg12.html'">
+        </div>
+</body>
+</html>
